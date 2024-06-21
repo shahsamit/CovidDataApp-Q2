@@ -1,0 +1,48 @@
+<div class="mx-5 md:mx-10 flex flex-col gap-y-4 mt-5">
+  <!-- Flex container with justify-between -->
+  <div class="flex flex-col md:flex-row justify-between items-center rounded-lg p-4">
+    <!-- Left section with title and date -->
+    <div class="flex flex-col">
+      <!-- Title and Date -->
+      <div class="mb-4">
+        <h1 class="text-2xl font-semibold">COVID-19 Cases</h1>
+        <p class="text-sm">Date: 7<sup>th</sup> March, 2021</p>
+      </div>
+
+      <!-- State dropdown -->
+      <div class="mb-4 flex flex-col md:flex-row">
+        <label for="state" class="font-semibold mr-2">State:</label>
+        <select class="px-4 py-1 md:w-72 border border-gray-300 rounded-md" id="state" name="state"
+          [(ngModel)]="selectedState" (change)="onStateChange()">
+          <option value="" disabled selected>Select State</option>
+          <option *ngFor="let state of states" [value]="state.value">{{ state.label }}</option>
+        </select>
+      </div>
+
+      <!-- Date Range inputs -->
+      <div class="flex flex-col md:flex-row md:gap-x-2">
+        <label for="startDate" class="font-semibold">Date Range:</label>
+        <input class="border border-gray-300 rounded-md px-2 py-1" type="date" [(ngModel)]="startDate"
+          (change)="onDateChange($event, 'start')" [min]="'2020-03-01'" [max]="'2021-03-06'" />
+        <span class="mx-2">to</span>
+        <input class="border border-gray-300 rounded-md px-2 py-1" type="date" [(ngModel)]="endDate"
+          (change)="onDateChange($event, 'end')" [min]="minEndDate" [max]="'2021-03-07'" />
+      </div>
+    </div>
+
+    <!-- Right section with the bar chart -->
+    <div class="w-full mt-10 md:mt-0">
+      <!-- Text label for bar chart -->
+      <div class="text-center mb-4">
+        <p class="text-sm">Data for last 7 days for the state of Arizona</p>
+      </div>
+
+      <!-- Last 7 Days Line chart component -->
+      <app-barchart></app-barchart>
+    </div>
+  </div>
+</div>
+
+<app-line-chart [selectedState]="selectedState" [startDate]="formatDateForApi(startDate)"
+  [endDate]="formatDateForApi(endDate)">
+</app-line-chart>

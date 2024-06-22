@@ -95,7 +95,7 @@ export class BarchartComponent implements OnInit {
   }
 
   fetchChartData() {
-    this.http.get<any>('http://localhost:3000/api/last7days').subscribe(data => {
+    this.http.get<any>('https://covid-data-app-q2-api.vercel.app/api/last7days').subscribe(data => {
       // Reverse the data array
       data = data.reverse();
 

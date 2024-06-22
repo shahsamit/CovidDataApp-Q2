@@ -45,7 +45,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       return;
     }
 
-    const apiUrl = `http://localhost:3000/api/covid-data`;
+    const apiUrl = `https://covid-data-app-q2-api.vercel.app/api/covid-data`;
 
     const requestBody = {
       state: this.selectedState,

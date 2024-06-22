@@ -42,7 +42,7 @@ export class StateFilterComponent implements OnInit {
   }
 
   fetchStates() {
-    const statesApiUrl = 'http://localhost:3000/api/states';
+    const statesApiUrl = 'https://covid-data-app-q2-api.vercel.app/api/states';
     this.http.get<State[]>(statesApiUrl).subscribe(
       (data: State[]) => {
         this.states = data;

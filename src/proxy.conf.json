@@ -1,6 +1,6 @@
 {
     "/api": {
-      "target": "http://localhost:3000/api",
+      "target": "https://covid-data-app-q2-api.vercel.app/api",
       "secure": false,
       "changeOrigin": true
     }
